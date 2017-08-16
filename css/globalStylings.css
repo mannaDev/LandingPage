@@ -1,0 +1,44 @@
+.moveLeft{
+    float: left;
+}
+.moveRight{
+    float: right;
+}
+.clearBoth{
+    clear: both;
+}
+.clearLeft{
+    clear: left;
+}
+.clearRight{
+    clear: right;
+}
+.cursorPointer{
+    cursor: pointer;
+}
+.textAtCenter{
+    text-align: center;
+}
+.boldFont{
+    font-weight: bold;
+}
+.italicFont{
+    font-style: italic;
+}
+.underlineText{
+    text-decoration: underline;
+}
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+p{
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+.enable-y-scroller{
+    overflow-y: scroll;
+}
+ul.listStyleSquare{
+    list-style-type: square;
+}

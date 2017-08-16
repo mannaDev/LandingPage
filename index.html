@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ARIA</title>
+        <!--link href = "css/reset.css" rel = "stylesheet" type="text/css" />
+        <link href = "css/style.css" rel = "stylesheet" type="text/css" /-->
+        <!--My CSS Files-->
+        <link href = "css/reset.css" type="text/css" rel="stylesheet"/>
+        
+        
+        <script src = "js/jquery-lib.min.js" type="text/javascript"></script>
+        
+        <!--Bootstrap Library-->
+        <script src = "bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <link href="bootstrap/css/bootstrap-theme.min.css" type="text/css" rel="stylesheet"/>
+        <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+        
+            
+        <!--For Custom Font-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine&effect=fire-animation|3d-float|neon">
+
+        <!-- -------------ANGULAR SCRIPT---------------- -->
+        <script src="js/angular.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+        
+        <!--My Files CSS and Script-->
+        <link href = "css/globalStylings.css" type="text/css" rel="stylesheet"/>
+        <link href = "css/style.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="js/script.js"></script>
+    
+    </head>
+    
+    <body ng-app = "myApp" ng-controller = "loaderController">
+        <!--The Loader GIF section-->
+            <div id = "loaderImage">
+                <div></div>
+                <script>
+                    document.getElementById("loaderImage").style.height = screen.innerHeight + "px";
+                    window.addEventListener("load", function(){
+                        document.body.removeChild(loaderImage);
+                    });
+                </script>
+            </div>
+        <!--END-->
+        <!--button ng-click = "showPage()">SHOW</button-->
+        
+        <!--THE MAIN PAGE CODE-->
+        <header>
+            <section class = "moveLeft textAtCenter font-effect-fire-animation">
+                <h5>ENTER</h5>
+                <h5>TO WIN</h5>
+            </section>
+            
+            <section class = "moveRight textAtCenter">
+                <button ng-click = "openRegistrationPopUp()" class = "btn btn-warning">Register</button>
+            </section>
+            <div></div>
+        </header>
+        <section id = "banner" class = "textAtCenter">
+            <div class = "font-effect-neon">&#8706&#8707&#8364 DATA SCIENCE CONTEST</div>
+            <h4 class = "italicFont boldFont font-effect-fire-animation">{{count}} Days Remaining</h4>
+        </section>
+        <nav>
+            <div ng-click = "prevPage()">
+                <span> &#060 </span>
+            </div>
+            
+            <section>
+                <div ng-if="page(1)" id = "page1">
+                    <h3>Description</h3>
+                    <p>Generic drugs are copies of branded drugs, which can only be produced after the branded drug’s patent has expired. Although they are identical to their branded counterparts, they are priced at significant discounts to the branded price. As generic drug makers go through an abbreviated and less costly process to get an approval from the govt. agencies, prices of generics are relatively lower. Currently, on average, the cost of a generic drug is 80 to 85 percent lower than the branded product.</p>
+                    <p>Public and private spending on pharmaceuticals account for a substantial fraction of the total expenses of health care in developed and developing countries (WHO, 2000; OECD, 2011). And optimizing this cost is of importance to control spending. By 2016, it is expected that the value of the total global generics sector will have risen to $358 billion, representing more than 18% of all pharmaceuticals.</p>
+                    <p>The owner of the branded drugs or (old-)originals compete with the generic companies for the same molecule. The generic drugs are purchased by Hospitals through a bidding process wherein several vendors compete for contracts. Vendor offering the lowest price to hospital wins the bid for a certain contractual duration.</p>
+                </div>
+                
+                <div ng-if="page(2)" id = "page2">
+                    <h3>Objective</h3>
+                    <p>There are 2 main objectives to this contest:</p>
+                    <ul>
+                        <li>1. Build a model to predict winning bid price for products after LOE (Loss of Exclusivity) for different geographies (identified by account, province, region)
+                            <ul>
+                                <li>1. Predict Bid Price for products with Molecules 1 and 2 as active ingredients after LOE i.e. in 2016</li>
+                            </ul>
+                        </li>
+                        <li>2. Based on modeling, prepare a report to understand the dynamics of pricing strategies of vendors for different molecules in different markets. Some of the questions the report should be able to answer are as follows:
+                            <ul>
+                                <li>1. Vendors with aggressive pricing strategies</li>
+                                <li>2. Geographies where pricing is aggressive or less aggressive</li>
+                                <li>3. Segments where vendors tend to have more or less focus</li>
+                                <li>4. How presence of multiple vendors impact bidding prices</li>
+                                <li>5. Impact of volumes on winning bids</li>
+                                <li>6. Trends of bidding prices and its impact on new molecules.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div ng-if="page(3)" id = "page3">
+                    <h3>Data</h3>
+                    <p>Bidding price data is provided for 4 molecules across different accounts and regions along with winner and competitor’s bids. Each data record consists of the following attributes.</p>
+                    <ul>
+                        <li>a. Row and Account ID (Account is indicative of hospital purchasing the drug)</li>
+                        <li>b. Geographic information – region, province</li>
+                        <li>c. Bid Info – Length, Volume, Dates: Offer, Contract start, Contract end</li>
+                        <li>d. Molecule Type, Presentation</li>
+                        <li>e. Winning Bid, Product, Company</li>
+                        <li>f. Competitors Bidding price & company</li>
+                    </ul>
+                </div>
+                
+                <div ng-if="page(4)" id = "page4" class = "enable-y-scroller" >
+                    <h3>Contest Tasks</h3>
+                    <p>The contest has two mandatory tasks:</p>
+                    <ul>
+                        <li><p class = "boldFont">Task 1: Public/Private Leaderboard Modelling Task</p>
+                            <p>Build model using training data and submit scores for the test data using the data files provided in the “Data” tab. Conditional winners will be chosen from public/private leaderboard. All data files can be downloaded from "Data" tab. Please refer to "Information" tab for detailed information.</p>
+                            <p>The column to be predicted is: <span class = "boldFont">Winning_price_per_standard_unit</span></p>
+                            <p>Only 2 submissions per day are allowed.</p>
+                        </li>
+                        <br/>
+                        <li><p class = "boldFont">Task 2: Model/Report Submission Task (ONLY Conditional Winners)</p>
+                            <p>This task is mandatory and requires all conditional winners to submit a detailed report of the model findings and analysis of the market dynamics of the generic drugs and market bidding price strategies among the companies. Report should cover points mentioned in Obective 2 above. </p>
+                        </li>
+                    </ul>
+                    <p>CAX_Bidding_Molecule_1_2_ConditionalWinners.csv data will be provided with bidding prices for Pre-LOE post Task 1       
+                    completion.</p>
+                    <p>Solvers are encouraged to use additional region or molecule stats file (<span class = "boldFont"> CAX_AdditionalData.zip</span>) provided for analysis to be submitted in the report. Condtional Winners will be chosen from public/private leaderabord scores.</p>
+                    <p class = "boldFont">NOTE: Task 1 will carry 60% and Task 2 will carry 40% weightage towards final evaluation.</p>
+                </div>
+                
+                <div ng-if="page(5)" id = "page5" class = "enable-y-scroller" >
+                    <h3>Evaluation Criteria</h3>
+                    <p>Task 1 Evaluation Criteria:</p>
+                    <ul>
+                        <li>1. RMSE – will be used as model evaluation metric for Task 1.</li>
+                    </ul>
+                    <p>Task 2 Evaluation Criteria:</p>
+                    <ul>
+                        <li>1. Feature Engineering for making bidding price predictions</li>
+                        <li>2. Winning Bid price for Molecule 1 and 2 based on the model developed</li>
+                        <li>3. Insights uncovered from modeling and analysis   </li>
+                        <li>4. Presentation of the report</li>
+                        <li>5. Completeness of the report – both modelling approach and market bidding dynamics based on modeling have to be explained and presented</li>
+                    </ul>
+                    <br/>
+                    <p>Please NOTE:</p>
+                    <ul>
+                        <li>1. Additional evaluation metrics like MAPE etc. will be used for evaluating condtional winners models during Task 2.</li>
+                        <li>2. Client evaluation will be considered final.</li>
+                    </ul>
+                </div>
+                
+                <p class = "boldFont"></p>
+                
+            </section>
+            
+            
+            
+            
+            <div ng-click = "nextPage()">></div>
+        </nav>
+        <section id = "prize">
+            <h2>PRIZE FOR THE WINNERS</h2>
+            <ul>
+                <li>
+                    <figure>
+                         <img src="assets/winner.png" alt="The Pulpit Rock" width="100%" height="228">
+                         <figcaption class = "font-effect-fire-animation">WINNER</figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                         <img src="assets/oner.jpg" alt="The Pulpit Rock" width="80%" height="250">
+                         <figcaption>1ST RUNNER UP</figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                         <img src="assets/twor.jpg" alt="The Pulpit Rock" width="100%" height="250">
+                         <figcaption>2ND RUNNER UP</figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </section>
+        <footer>
+            <section>
+                <h2>OUR PARTNERS</h2>
+                <ul>
+                    <li><img src = "assets/apple.png"/ width = "100" height = "100"/></li>
+                    <li><img src = "assets/nokia.png"/ width = "200" height = "100"/></li>
+                    <li><img src = "assets/panasonic.png"/ width = "250" height = "80"/></li>
+                    <li><img src = "assets/samsung.png"/ width = "200" height = "100"/></li>
+                    <li><img src = "assets/vivo.png"/ width = "200" height = "75"/></li>
+                </ul>
+            </section>
+            <section>
+                <div>Designed by Kaushal Manna for skillenza contest</div>
+                <div class = "moveLeft">Copyright&#169 by skillenza</div><div class = "moveLeft underlineText">kaushal1628.11@bitmesra.ac.in</div>
+            </section>
+            
+        </footer>
+            
+            
+        
+        
+        <!--The Form For Sign Up-->
+			<div id = "registrationBox" ng-if="register">
+				<section class="img-rounded">
+                    <div ng-click = "closeRegistrationPopUp()" class = "moveRight cursorPointer">CLOSE</div>
+					<h2>Sign Up</h2>
+					<form class="form-horizontal" action="#">
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="email">Full Name:</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" id="fname" placeholder="Enter Full name" name="fullName">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="pwd">Username:</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="uname" placeholder="Enter username" name="userName">
+								</div>
+						</div>
+						<div class="form-group">        
+							<label class="control-label col-sm-2" for="pwd">Password:</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd1">
+								</div>
+						</div>
+						<div class="form-group">        
+							<label class="control-label col-sm-2" for="pwd">Re-enter Password:</label>
+								<div class="col-sm-10">
+									<input type="password" class="form-control" id="dupepwd" placeholder="Re-Enter password" name="pwd2">
+								</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-default">Submit</button>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+            <script>
+                document.getElementById("registrationBox").style.height = document.body.scrollHeight + "px";
+            </script>
+        <!--END-->
+        
+    </body>
+</html>
